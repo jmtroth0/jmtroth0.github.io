@@ -2089,7 +2089,8 @@
 			display: block;
 			margin: 0 0 2em 0;
 			width: 100%;
-			height: 280px;
+			max-height: 280px;
+			min-height: 240px;
 			overflow: hidden;
 		}
 
