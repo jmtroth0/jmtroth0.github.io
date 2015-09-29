@@ -30,6 +30,12 @@
 		list-style: none;
 	}
 
+	img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
 	blockquote, q {
 		quotes: none;
 	}
@@ -2000,7 +2006,7 @@
 			display: block;
 			height: 100%;
 			left: 0;
-			opacity: 0.5;
+			opacity: 0.2;
 			position: absolute;
 			top: 0;
 			width: 100%;
@@ -2010,7 +2016,18 @@
 			text-align: center;
 		}
 
-			.image.thumb:after {
+			/*.image > .github-link,
+			.image > .live-link {
+				opacity: 0;
+			}
+
+			.image:hover a.github-link,
+			.image:hover a.live-link {
+				opacity: .9;
+			}*/
+
+
+			/*.image.thumb:after {
 				-moz-transition: opacity 0.2s ease-in-out;
 				-webkit-transition: opacity 0.2s ease-in-out;
 				-ms-transition: opacity 0.2s ease-in-out;
@@ -2041,7 +2058,7 @@
 			.image.thumb:hover:before {
 				background: url("images/overlay.png"), url("images/overlay.png");
 				opacity: 1.0;
-			}
+			}*/
 
 		.image img {
 			border-radius: 0.35em;
@@ -2072,6 +2089,8 @@
 			display: block;
 			margin: 0 0 2em 0;
 			width: 100%;
+			height: 280px;
+			overflow: hidden;
 		}
 
 			.image.fit img {
@@ -2217,13 +2236,14 @@
 		ul.labeled-icons {
 			list-style: none;
 			padding: 0;
+			width: 100%;
 		}
 
 			ul.labeled-icons li {
 				line-height: 1.75em;
-				margin: 1.5em 0 0 0;
 				padding-left: 2.25em;
 				position: relative;
+				float: left;
 			}
 
 				ul.labeled-icons li:first-child {
@@ -2232,6 +2252,11 @@
 
 				ul.labeled-icons li a {
 					color: inherit;
+					padding-left: 20px;
+				}
+
+				ul.labeled-icons li span {
+					padding: 0 30px 0 20px;
 				}
 
 				ul.labeled-icons li h3 {
@@ -2241,6 +2266,7 @@
 					text-align: center;
 					top: 0;
 					width: 1em;
+					padding: 0 0 0 15px;
 				}
 
 	dl {
