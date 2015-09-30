@@ -1572,7 +1572,7 @@
 		}
 
 	body, input, select, textarea {
-		color: #a2a2a2;
+		color: #333;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 16pt;
 		font-weight: 400;
@@ -1596,7 +1596,7 @@
 		}
 
 	strong, b {
-		color: #787878;
+		color: #aaa;
 		font-weight: 400;
 	}
 
@@ -2242,7 +2242,7 @@
 
 			ul.labeled-icons li {
 				line-height: 1.75em;
-				padding-left: 2.25em;
+				padding-left: 2em;
 				position: relative;
 				float: left;
 			}
@@ -2257,7 +2257,7 @@
 				}
 
 				ul.labeled-icons li span {
-					padding: 0 30px 0 20px;
+					padding: 0 30px 0 15px;
 				}
 
 				ul.labeled-icons li h3 {
