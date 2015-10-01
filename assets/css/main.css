@@ -45,6 +45,7 @@
 		content: none;
 	}
 
+
 	table {
 		border-collapse: collapse;
 		border-spacing: 0;
@@ -3133,3 +3134,8 @@
 			}
 
 	}
+
+
+a {
+	border-bottom: none;
+}
