@@ -82,11 +82,12 @@
 	ul.icons {
 		list-style: none;
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-evenly;
 	}
 	
 	ul.icons li {
 		display: flex;
+		padding: 5%;
 	}
 
 	ul.icons li img {
