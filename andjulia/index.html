@@ -23,11 +23,13 @@
 		.floral { width: 22%; max-width: 130px; height: auto; mix-blend-mode: multiply; }
 		.floral.mirrored { transform: scaleX(-1); }
 		.photos img { max-width: 100%; margin: 1rem 0; }
+		.more { display: block; margin: 1rem 0; color: #333; }
 		.illustration { max-width: 100%; margin: 1rem 0; mix-blend-mode: multiply; }
 		@media (max-width: 639px) {
 			.wide-only { display: none; }
 		}
 		@media (min-width: 640px) {
+			.more { display: none; }
 			main { max-width: 760px; }
 			.photo-row { display: flex; gap: 1rem; align-items: center; }
 			.photo-row img { flex: var(--ar) 1 0px; min-width: 0; margin: 0.5rem 0; }
@@ -62,10 +64,10 @@
 			</div>
 			<div class="photo-row">
 				<img style="--ar: 0.75" src="photos/IMG_3359.jpg" alt="The ring, and the paws">
-				<img style="--ar: 0.75" src="photos/IMG_0871.jpg" alt="Jordan treating the dog">
+				<img class="wide-only" loading="lazy" style="--ar: 0.75" src="photos/IMG_0871.jpg" alt="Jordan treating the dog">
 			</div>
 			<div class="photo-row">
-				<img style="--ar: 1.5" src="photos/DSCF3863.JPG" alt="Julia crouching with the dog on a wooded boardwalk, surrounded by ferns and fallen leaves">
+				<img class="wide-only" loading="lazy" style="--ar: 1.5" src="photos/DSCF3863.JPG" alt="Julia crouching with the dog on a wooded boardwalk, surrounded by ferns and fallen leaves">
 				<img class="wide-only" loading="lazy" style="--ar: 1.333" src="photos/IMG_3440.jpg" alt="Jordan and Julia in pink with the dog">
 			</div>
 			<div class="photo-row">
@@ -74,9 +76,10 @@
 				<img class="wide-only" loading="lazy" style="--ar: 0.818" src="photos/IMG_6947.jpg" alt="Jordan and Julia in aprons, making dumplings together in a kitchen">
 			</div>
 			<div class="photo-row">
-				<img style="--ar: 1.333" src="photos/IMG_1604.jpeg" alt="Group photo of friends dressed in 1920s-style costumes at a party">
+				<img class="wide-only" loading="lazy" style="--ar: 1.333" src="photos/IMG_1604.jpeg" alt="Group photo of friends dressed in 1920s-style costumes at a party">
 			</div>
 		</div>
+		<a class="more" href="photos.html">See more photos</a>
 
 		<p class="note">We aren't expecting gifts, but if you feel so inclined, we'd welcome contributions to our honeymoon fund or donations to causes we care about, including the Seattle Foundation, the ACLU, or Julia's mutual aid group.</p>
 		<p class="note">If you send something by Venmo, please include a note saying where you'd like it to go, so we can make sure it ends up in the right place.</p>
