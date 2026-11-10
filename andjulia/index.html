@@ -6,7 +6,7 @@
 	<title>Jordan &amp; Julia</title>
 	<meta property="og:title" content="Jordan &amp; Julia">
 	<meta property="og:description" content="November 12, 2026">
-	<meta property="og:image" content="https://www.jordanroth.xyz/andjulia/photos/IMG_1186.jpg">
+	<meta property="og:image" content="https://www.jordanroth.xyz/andjulia/photos/us-preview.jpg">
 	<style>
 		body {
 			margin: 0;
@@ -18,7 +18,21 @@
 		}
 		main { max-width: 600px; margin: 0 auto; }
 		h1 { font-weight: normal; letter-spacing: 0.05em; }
+		.title { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+		.title h1 { margin: 0.67em 0; }
+		.floral { width: 22%; max-width: 130px; height: auto; mix-blend-mode: multiply; }
+		.floral.mirrored { transform: scaleX(-1); }
 		.photos img { max-width: 100%; margin: 1rem 0; }
+		.illustration { max-width: 100%; margin: 1rem 0; mix-blend-mode: multiply; }
+		@media (max-width: 639px) {
+			.wide-only { display: none; }
+		}
+		@media (min-width: 640px) {
+			main { max-width: 760px; }
+			.photo-row { display: flex; gap: 1rem; align-items: center; }
+			.photo-row img { flex: var(--ar) 1 0px; min-width: 0; margin: 0.5rem 0; }
+			.note { max-width: 600px; margin-left: auto; margin-right: auto; }
+		}
 		.note { font-size: 0.95rem; margin-top: 2rem; }
 		a.venmo {
 			display: inline-block;
@@ -32,18 +46,32 @@
 </head>
 <body>
 	<main>
-		<h1>Jordan &amp; Julia</h1>
+		<div class="title">
+			<img class="floral" src="photos/florals.jpg" alt="">
+			<h1>Jordan &amp; Julia</h1>
+			<img class="floral mirrored" src="photos/florals.jpg" alt="">
+		</div>
 		<p>November 12, 2026</p>
 
+		<img class="illustration" src="photos/us.png" alt="Illustration of Jordan and Julia embracing, holding a bouquet wrapped in paper marked XI.XII">
+
 		<div class="photos">
-			<img src="photos/IMG_1186.jpg" alt="Jordan and Julia on a lava field in Iceland">
-			<img src="photos/IMG_3359.jpg" alt="The ring, and the paws">
-			<img src="photos/IMG_5704.jpg" alt="Jordan and Julia in Vancouver">
-			<img src="photos/DSCF3939.jpg" alt="Julia by Toledo">
-			<img src="photos/DSCF0696.JPG" alt="Jordan and Julia at al-Maha">
-			<img src="photos/IMG_0871.jpg" alt="Jordan treating the dog">
-			<img src="photos/IMG_4176.jpg" alt="Jordan and Julia confused on the Mall">
-			<img src="photos/IMG_3440.jpg" alt="Jordan and Julia in pink with the dog">
+			<div class="photo-row">
+				<img style="--ar: 1.333" src="photos/IMG_1186.jpg" alt="Jordan and Julia on a lava field in Iceland">
+				<img style="--ar: 1.333" src="photos/IMG_5704.jpg" alt="Jordan and Julia in Vancouver">
+			</div>
+			<div class="photo-row">
+				<img style="--ar: 0.75" src="photos/IMG_3359.jpg" alt="The ring, and the paws">
+				<img style="--ar: 0.75" src="photos/IMG_0871.jpg" alt="Jordan treating the dog">
+			</div>
+			<div class="photo-row">
+				<img style="--ar: 1.5" src="photos/DSCF3939.jpg" alt="Julia by Toledo">
+				<img class="wide-only" loading="lazy" style="--ar: 1.5" src="photos/DSCF0696.JPG" alt="Jordan and Julia at al-Maha">
+			</div>
+			<div class="photo-row">
+				<img class="wide-only" loading="lazy" style="--ar: 0.75" src="photos/IMG_4176.jpg" alt="Jordan and Julia confused on the Mall">
+				<img class="wide-only" loading="lazy" style="--ar: 1.333" src="photos/IMG_3440.jpg" alt="Jordan and Julia in pink with the dog">
+			</div>
 		</div>
 
 		<p class="note">We aren't expecting gifts, but if you feel so inclined, we'd welcome contributions to our honeymoon fund or donations to causes we care about, including the Seattle Foundation, the ACLU, or Julia's mutual aid group.</p>
