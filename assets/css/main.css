@@ -65,13 +65,15 @@
 
 	.image.avatar {
 		width: 200px;
-		margin: 100px auto;
+		margin: 100px auto 48px;
 	}
 
 	.image.avatar img {
 		border-radius: 50%;
 		width: 200px;
-		overflow: hidden;
+		height: 200px;
+		object-fit: cover;
+		object-position: 50% 30%;
 	}
 
 	footer {
@@ -81,18 +83,33 @@
 	ul.icons {
 		list-style: none;
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: clamp(16px, 5vw, 36px);
+		padding: 0 16px;
 	}
-	
+
 	ul.icons li {
 		display: flex;
-		padding: 5%;
+	}
+
+	ul.icons li a {
+		display: flex;
+		padding: 8px;
+		border-radius: 8px;
 	}
 
 	ul.icons li img {
 		height: 32px;
+		width: 32px;
 	}
 
-	.icon img:hover {
+	.icon:hover img,
+	.icon:focus-visible img {
 		filter: invert(50%);
+	}
+
+	.icon:focus-visible {
+		outline: 2px solid rgba(255, 255, 255, 0.6);
+		outline-offset: 2px;
 	}
