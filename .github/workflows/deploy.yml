@@ -1,0 +1,54 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: # run by hand to republish after changing photos in S3
+
+# Never run two deploys at once.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  id-token: write # lets GitHub exchange its OIDC token for short-lived AWS credentials
+  contents: read
+
+env:
+  SITE_BUCKET: jmtr-personal-site
+  SITE_DISTRIBUTION: E113N5IHEOLO3K # Pulumi output distribution_id (infra/)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      # Role personal-site-github-deploy (infra/): read the photos bucket, write
+      # the site bucket, invalidate the distribution. No stored keys.
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-west-2
+
+      - run: npm ci
+
+      # Downloaded photos and Astro's resized images. Restored after npm ci, which
+      # deletes node_modules. The fetch script and Astro only redo what changed.
+      - uses: actions/cache@v6
+        with:
+          path: |
+            src/photo-cache
+            node_modules/.astro
+          key: photos-${{ github.run_id }}
+          restore-keys: photos-
+
+      - run: npm run build
+
+      - run: sh scripts/deploy.sh

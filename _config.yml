@@ -1,3 +1,0 @@
-# GitHub Pages builds this repo with Jekyll. Keep the Pulumi code off the live site.
-exclude:
-  - infra

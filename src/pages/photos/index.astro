@@ -1,0 +1,92 @@
+---
+// The photo gallery. Served as the home page of portfolio.jordanroth.xyz.
+// Photos come from S3 via scripts/fetch-photos.mjs, which runs before every build.
+import type { ImageMetadata } from "astro";
+import { Image, getImage } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import manifest from "../../photo-cache/manifest.json";
+
+const files = import.meta.glob<{ default: ImageMetadata }>(
+  "../../photo-cache/*.{jpg,png,webp}",
+  { eager: true },
+);
+
+const photos = await Promise.all(
+  manifest.map(async (photo) => {
+    const mod = files[`../../photo-cache/${photo.file}`];
+    if (!mod) throw new Error(`Missing downloaded photo: ${photo.file}`);
+    // Opened in a new tab when a photo is clicked.
+    const full = await getImage({ src: mod.default, width: 2400, format: "jpg", quality: 85 });
+    return { src: mod.default, alt: photo.alt, full: full.src };
+  }),
+);
+
+const title = "Jordan Roth | Photography Portfolio";
+const description = "A photography portfolio by Jordan Roth.";
+---
+<Base title={title} description={description}>
+  <Fragment slot="head">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://portfolio.jordanroth.xyz/" />
+    <link rel="canonical" href="https://portfolio.jordanroth.xyz/" />
+  </Fragment>
+
+  <main>
+    <ul class="image-list">
+      {photos.map((photo, i) => (
+        <li class="image-list-item">
+          <a href={photo.full} target="_blank" rel="noopener noreferrer">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              width={1024}
+              widths={[512, 768, 1024]}
+              sizes="(max-width: 800px) 100vw, 33vw"
+              loading={i < 3 ? "eager" : "lazy"}
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Base>
+
+<style is:global>
+  html {
+    background: #2b2a31;
+  }
+  body {
+    margin: 0;
+  }
+</style>
+
+<style>
+  .image-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .image-list-item {
+    max-width: 512px;
+    width: calc(33vw - 30px);
+    min-width: 256px;
+    flex-grow: 1;
+  }
+  .image-list-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .image-list-item:hover {
+      filter: grayscale(100%);
+    }
+  }
+</style>
