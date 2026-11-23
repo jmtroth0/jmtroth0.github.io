@@ -1,0 +1,8 @@
+name: personal-site
+description: AWS infrastructure for jordanroth.xyz
+runtime:
+  name: python
+  options:
+    toolchain: uv
+backend:
+  url: s3://jmtr-pulumi-state?region=us-west-2

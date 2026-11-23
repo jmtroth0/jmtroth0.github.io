@@ -1,0 +1,4 @@
+secretsprovider: awskms://alias/pulumi-personal-site?region=us-west-2
+encryptedkey: AQICAHgBzUdlyAIC2Ou/r8Rrz3vujhyZ/yyN8+VDnXvg9IoDnQGvGkbjJeYAqvdDt3cTrDf9AAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMwIBaM7Rn0AITj3rCAgEQgDvcF64EHwXSLrdiyE8jIzIbmbyReZglsY5UNa/NU1Y7RVltTOkhRG4FCulV3tZ68kNEyUjxA9c0b/lwbg==
+config:
+  aws:region: us-west-2
